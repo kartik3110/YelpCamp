@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
     res.send('this is the root page');
 })
 
+//all camps
 app.get('/campgrounds', async (req, res) => {
     const allCamps = await Campground.find({});
     res.render('campgrounds/index', { allCamps });
@@ -65,6 +66,12 @@ app.put('/campgrounds/:id', async (req, res) => {
     res.redirect(`/campgrounds/${newCamp.id}`)
 })
 
+//delete
+app.delete('/campgrounds/:id', async (req, res) => {
+    const { id } = req.params;
+    await Campground.findByIdAndDelete(id);
+    res.redirect('/campgrounds');
+})
 
 
 app.listen(3000, () => {
