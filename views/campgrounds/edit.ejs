@@ -3,39 +3,61 @@
 
     <div class="row mb-3">
         <div class="col-6 offset-3">
-            <form action="/campgrounds/<%= foundCamp._id %>?_method=PUT" method="POST">
+            <form action="/campgrounds/<%= foundCamp._id %>?_method=PUT" method="POST" class="needs-validation"
+                novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title: </label>
                     <input type="text" class="form-control" id="title" name="campground[title]"
-                        value="<%= foundCamp.title %>">
+                        value="<%= foundCamp.title %>" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="location" class="form-label">Location: </label>
                     <input type="text" class="form-control" id="location" name="campground[location]"
-                        value="<%= foundCamp.location %>">
+                        value="<%= foundCamp.location %>" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="image" class="form-label">Image Url: </label>
                     <input type="text" class="form-control" id="image" name="campground[image]"
-                        value="<%= foundCamp.image %>">
+                        value="<%= foundCamp.image %>" required>
                 </div>
 
                 <label for="price" class="form-label">Price: </label>
                 <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
                     <input id="price" name="campground[price]" type="text" class="form-control" placeholder="0.00"
-                        value="<%= foundCamp.price %>">
+                        value="<%= foundCamp.price %>" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description: </label>
-                    <textarea name="campground[description]" class="form-control" id="description" rows="3">
+                    <textarea name="campground[description]" class="form-control" id="description" rows="3" required>
                         <%= foundCamp.description %>
                     </textarea>
                 </div>
-                <button class="btn btn-primary">Save changes<button>
+                <button class="btn btn-primary">Save changes</button>
             </form>
         </div>
     </div>
+
+    <script>
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
