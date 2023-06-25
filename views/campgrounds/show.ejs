@@ -1,7 +1,7 @@
 <% layout('layouts/boilerplate') %>
 
     <div class="row">
-        <div class="col-6 offset-3">
+        <div class="col-6">
             <div class="card mb-3">
                 <img src="<%= foundCamp.image %>" class="card-img-top">
                 <div class="card-body">
@@ -34,9 +34,43 @@
                         </button>
                     </form>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer mb-3">
                     2 days ago
                 </div>
             </div>
+        </div>
+        <div class="col-6">
+            <h3>Leave a review!</h3>
+            <form action="/campgrounds/<%=foundCamp._id %>/reviews" class="mb-3 needs-validation" method="POST"
+                novalidate>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating</label>
+                    <input class="form-range" id="rating" name="review[rating]" type="range" max="5" min="1">
+                </div>
+                <div class="mb-3">
+                    <label for="body" class="form-label">Review</label>
+                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
+                        placeholder="Add a review.." required></textarea>
+                </div>
+                <button class="btn btn-success">Done!</button>
+            </form>
+
+
+            <% for(let review of foundCamp.reviews) { %>
+                <div class="card mb-3 ">
+                    <div class="card-body">
+                        <h5 class="card-title">Rating: <%= review.rating %>
+                        </h5>
+                        <p class="card-text">Review: <%= review.body %>
+                        </p>
+                        <form action="/campgrounds/<%=foundCamp._id %>/reviews/<%= review._id %>?_method=Delete"
+                            method="POST">
+                            <button class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
         </div>
     </div>
