@@ -1,0 +1,22 @@
+<% layout('layouts/boilerplate') %>
+
+    <h1>Register</h1>
+    <form action="/register" method="post" class="needs-validation" novalidate>
+
+        <div class="mb-3">
+            <label class="form-label" for="username">Username: </label>
+            <input type="text" name="username" id="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="email">Email: </label>
+            <input type="email" name="email" id="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="password">Password: </label>
+            <input type="password" name="password" id="password" class="form-control" required>
+        </div>
+
+        <a class="mb-3 d-block" href="/login">already a user? Sign in instead</a>
+        <button class="btn btn-primary">Register</button>
+
+    </form>

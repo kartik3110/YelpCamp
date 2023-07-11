@@ -1,5 +1,8 @@
 <% layout('layouts/boilerplate') %>
 
+    <div class="d-flex justify-content-center mb-3">
+        <h1>Create new campground</h1>
+    </div>
     <div class="row mb-3">
         <div class="col-6 offset-3"> <!--centering a div -->
             <form action="/campgrounds" method="POST" class="needs-validation" novalidate>
@@ -23,12 +26,15 @@
                 </div>
 
                 <div class="mb-3">
+                    <input type="file" name="image" enctype="multipart/form-data">
+                </div>
+                <!-- <div class="mb-3">
                     <label for="image" class="form-label">Image Url: </label>
                     <input type="text" class="form-control" id="image" name="campground[image]" required>
                     <div class="invalid-feedback">
                         Please provide a valid image url.
                     </div>
-                </div>
+                </div> -->
 
                 <label for="price" class="form-label">Price: </label>
                 <div class="input-group mb-3">
