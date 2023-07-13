@@ -5,7 +5,7 @@
     </div>
     <div class="row mb-3">
         <div class="col-6 offset-3"> <!--centering a div -->
-            <form action="/campgrounds" method="POST" class="needs-validation" novalidate>
+            <form action="/campgrounds" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title: </label>
                     <input type="text" class="form-control" id="title" name="campground[title]" required>
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <input type="file" name="image" enctype="multipart/form-data">
+                    <input type="file" name="image">
                 </div>
                 <!-- <div class="mb-3">
                     <label for="image" class="form-label">Image Url: </label>

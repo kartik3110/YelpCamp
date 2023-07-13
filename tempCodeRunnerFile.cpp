@@ -1,3 +1,0 @@
-
-    cin >> data;
-    head = ins

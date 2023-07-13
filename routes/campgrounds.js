@@ -4,7 +4,7 @@ const router = express.Router();
 const { campgroundSchema } = require('../schemas')
 const { isLoggedIn, isAuthor } = require('../middleware')
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' }) 
+const upload = multer({ dest: 'uploads/' }) //upload is a middleware
 
 const Campground = require('../models/campground');
 
@@ -34,7 +34,7 @@ router.route('/')
     .get(campgrounds.index)
     .post(upload.single('image'), (req, res) => {
         console.log(req.body, req.file)
-        res.send(req.file)
+        res.redirect('/campgrounds');
     })
 // .post(isLoggedIn, validateCamp, catchAsync(campgrounds.createCampground))
 
