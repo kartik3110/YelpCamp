@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== "production") {//development by default
     require('dotenv').config();
 }
 
@@ -11,6 +11,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+
 
 
 const campgroundRoutes = require('./routes/campgrounds');
@@ -52,7 +53,7 @@ const sessionOptions = {
     cookie: {
         httpOnly: true,
         expires: Date.now() + (1000 * 60 * 60 * 24 * 7),
-        maxAge: 1000 * 60 * 60 * 24 * 7
+        maxAge: 1000 * 60 * 60 * 24 * 7//1week
     }
 }
 app.use(session(sessionOptions))

@@ -4,10 +4,10 @@ const router = express.Router();
 const { campgroundSchema } = require('../schemas')
 const { isLoggedIn, isAuthor } = require('../middleware')
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' }) //upload is a middleware
+const { storage } = require('../cloudinary')// node automatically looks for an index.js
+const upload = multer({ storage: storage }) //upload is a middleware
 
 const Campground = require('../models/campground');
-
 
 const expressError = require('../utils/expressError');
 const catchAsync = require('../utils/catchAsync');
