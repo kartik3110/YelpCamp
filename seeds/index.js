@@ -18,10 +18,28 @@ const seedDB = async () => {
         const camp = new Campground({
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: 'https://source.unsplash.com/collection/483251',
             author: '649a7a4de46f4c9dbf80702a',
             description: 'this is a sample description. The description was hard coded in the seeds/index file.',
-            price
+            price,
+            images: [
+                {
+                    url: 'https://res.cloudinary.com/dvhajlevd/image/upload/v1690972156/YelpCamp/wldiqnvu7khgbdb6gzvu.jpg',
+                    fileName: 'YelpCamp/wldiqnvu7khgbdb6gzvu',
+                },
+                {
+                    url: 'https://res.cloudinary.com/dvhajlevd/image/upload/v1690972155/YelpCamp/wvrxozdbmekzqln6aqju.jpg',
+                    fileName: 'YelpCamp/wvrxozdbmekzqln6aqju',
+                },
+                {
+                    url: 'https://res.cloudinary.com/dvhajlevd/image/upload/v1690972156/YelpCamp/wfsfdnhjl0rcsrmjb4ut.jpg',
+                    fileName: 'YelpCamp/wfsfdnhjl0rcsrmjb4ut',
+                }
+            ],
+            geometry:
+            {
+                type: "Point",
+                coordinates: [-113.1331, 47.0202]
+            }
         })
         await camp.save();
     }
