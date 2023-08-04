@@ -39,7 +39,7 @@
                     <input type="file" class="form-control" id="image" name="image" multiple>
                 </div>
                 <% foundCamp.images.forEach((img, index)=> { %>
-                    <img src="<%=img.url%>" class="img-thumbnail" alt="">
+                    <img src="<%=img.thumbnail%>" class="img-thumbnail" alt="">
                     <div class="form-check">
                         <label class="form-check-label" for="image-<%= index %>">
                             Delete this

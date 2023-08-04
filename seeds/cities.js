@@ -2898,7 +2898,7 @@ module.exports = [
         state: "Washington",
     },
     {
-        city: "Lee's Summit",
+        city: "Lees Summit",
         growth_from_2000_to_2013: "31.2%",
         latitude: 38.9108408,
         longitude: -94.3821724,
@@ -3483,7 +3483,7 @@ module.exports = [
         state: "Michigan",
     },
     {
-        city: "O'Fallon",
+        city: "OFallon",
         growth_from_2000_to_2013: "62.6%",
         latitude: 38.8106075,
         longitude: -90.69984769999999,
@@ -7200,7 +7200,7 @@ module.exports = [
         state: "New York",
     },
     {
-        city: "Coeur d'Alene",
+        city: "Coeur dAlene",
         growth_from_2000_to_2013: "32.8%",
         latitude: 47.6776832,
         longitude: -116.7804664,

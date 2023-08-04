@@ -5,6 +5,16 @@ const { ref } = require('joi');
 
 const Schema = mongoose.Schema;
 
+
+const ImageSchema = new Schema({        //made different schema just to add virtual property of thumbnail
+    url: String,
+    fileName: String
+})
+
+ImageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('upload', 'upload/w_200')
+})
+const opts = { toJSON: { virtuals: true } };
 const CampgroundSchema = new Schema({
     title: String,
     price: Number,
@@ -24,12 +34,7 @@ const CampgroundSchema = new Schema({
             required: true
         }
     },
-    images: [
-        {
-            url: String,
-            fileName: String
-        }
-    ],
+    images: [ImageSchema],
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -40,6 +45,13 @@ const CampgroundSchema = new Schema({
             ref: 'Review'
         }
     ]
+}, opts)
+
+CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
+    // return "<h5>hleo</h5>"
+    return `<a href=\\"/campgrounds/${this._id}\\">${this.title}</a>`
+
+    //when \\" will make so that the quotations will not get passed during JSON.parse, and will be kept as is.
 })
 
 CampgroundSchema.post('findOneAndDelete', async (doc) => {

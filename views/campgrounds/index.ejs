@@ -1,5 +1,5 @@
 <% layout('layouts/boilerplate') %>
-    <div id="map"></div>
+    <div id="map" style="width: 100%; height: 300px"></div>
     <h1 class="text-center mb-3">All campgrounds</h1>
 
     <ul>
@@ -28,5 +28,9 @@
 
             <% } %>
     </ul>
-    <!-- <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-    <script src="/javascripts/clusterMap.js"></script> -->
+    <script>
+        const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
+        const allCampsData = '{"features" : <%- JSON.stringify(allCamps) %>}'
+
+    </script>
+    <script src="/javascripts/clusterMap.js"></script>
