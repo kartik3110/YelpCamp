@@ -2,7 +2,10 @@
 //server-side generated.
 mapboxgl.accessToken = mapToken;
 const foundCamp = JSON.parse(foundCampData)
-console.log(foundCamp)
+console.log(campId)
+
+//other option is to use ajax to request campground data in this file
+
 const map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/streets-v12', // style URL

@@ -1,7 +1,5 @@
 mapboxgl.accessToken = mapToken;
-console.log(allCampsData)
 const campgrounds = JSON.parse(allCampsData);
-console.log(campgrounds)
 const map = new mapboxgl.Map({
     container: 'map',
     // Choose from Mapbox's core styles, or make your own style with Mapbox Studio

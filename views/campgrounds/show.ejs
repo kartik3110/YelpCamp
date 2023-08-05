@@ -149,6 +149,7 @@
         // this runs on the server side. as soon as it sees any ejs, it removes the ejs bracketed code and replaces it with values
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
         const foundCampData = '<%-JSON.stringify(foundCamp) %>'
+        const campId = '<%- foundCamp._id %>'
         // this sends a JSON string. parse it in the showpagemap.js to convert it into a JS object
     </script>
 

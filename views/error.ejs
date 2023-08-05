@@ -6,14 +6,16 @@
                 <h4 class="alert-heading">
                     <%=err.message%>
                 </h4>
-                <p>
-                    <%= err.stack %>
-                </p>
-                <div class="d-flex justify-content-center">
-                    <button class="btn btn-danger mt-3">
-                        Go back
-                    </button>
-                </div>
+                <% if (process.env.NODE_ENV !=="production" ) { %>
+                    <p>
+                        <%= err.stack %>
+                    </p>
+                    <% } %>
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-danger mt-3">
+                                Go back
+                            </button>
+                        </div>
             </div>
         </div>
     </div>
