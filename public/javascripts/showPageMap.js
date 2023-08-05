@@ -11,6 +11,8 @@ const map = new mapboxgl.Map({
 });
 
 
+map.addControl(new mapboxgl.NavigationControl());
+
 //create a new popup
 const myPopup = new mapboxgl.Popup({ offset: 25, closeButton: false })
     .setHTML(`<h3>${foundCamp.title}</h3>`)

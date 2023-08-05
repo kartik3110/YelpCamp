@@ -78,7 +78,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-    res.send('this is the root page');
+    res.render('home');
 })
 
 // routes

@@ -1,0 +1,27 @@
+body {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1475483768296-6163e08872a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+    background-size: cover;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.689);
+    display: inline;
+    margin-left: 1rem;
+}
+
+.nav-link.active {
+    color: white;
+    border-bottom: 0.1rem solid white;
+}
+
+.nav-link:hover {
+    color: white;
+}
+
+.btn {
+    text-shadow: 0 0.05rem 0.05rem rgba(0, 0, 0, 0.5);
+}
