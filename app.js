@@ -31,7 +31,8 @@ const catchAsync = require('./utils/catchAsync');
 // const Review = require('./models/review');
 // const catchAsync = require('./utils/catchAsync');
 const app = express();
-const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp';
+const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
+const secret = process.env.SECRET || 'thisshouldbeabettersecret';
 mongoose.set('strictQuery', true);
 mongoose.connect(dbUrl);
 
@@ -53,13 +54,13 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,//if not changed, only refresh sessions after 24 hrs
     crypto: {
-        secret: 'thisshouldbeabettersecret!'
+        secret: secret
     }
 });
 const sessionOptions = {
     store: store,// dont use default memory store to store sessions.
     name: 'session',
-    secret: 'thisshouldbeasecret',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -172,6 +173,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 })
 
-app.listen(3000, () => {
-    console.log('server running at port 3000');
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log(`server running at port ${port}`);
 })
