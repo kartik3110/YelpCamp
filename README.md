@@ -14,20 +14,20 @@ visited. This data is stored as per each user. The user can post the review for 
   * Add Name, Image and Description to the campground.
   * Create, Update, Delete the Campground.
   * Add comments to campgrounds.
-  * Flash Important messages to warn or gree the users.
+  * Flash Important messages to warn or greet the users.
   * Responsive Web design.
 * Authentication  
   * Users can sign up or login using username and password.
   * User can not submit campgrounds if they are not logged in.
 * Authorization 
   * User can only modify campgrounds created by them
-* User Profile
-  * Every registered user has profile where all his submitted campgrounds are shown.
+* Geo Location
+  * Every campground is diplayed on a map with navigation controls.
 
 ## Built With
 
 - [Node.js](https://nodejs.org) - Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 - [express](https://expressjs.com//) - Fast, unopinionated, minimalist web framework for Node.js
-- [MongoDB](https://www.mongodb.com/) - The database for modern applications
+- [MongoDB](https://www.mongodb.com/) - Document-oriented database for modern applications
 - [Mongoose](https://mongoosejs.com/) - Node.js-based Object Data Modeling (ODM) library for MongoDB
 - [EJS](https://ejs.co/) - Embedded JavaScript Templating
