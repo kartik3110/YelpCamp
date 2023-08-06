@@ -15,7 +15,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
 
 
-
+const Campground = require('./models/campground')
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
@@ -132,6 +132,18 @@ app.get('/', (req, res) => {
     res.render('home');
 })
 
+app.get('/find/:id', catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const foundCamp = await Campground.findById(id);
+    console.log('in api call')
+    console.log(foundCamp)
+    res.json(foundCamp)
+}))
+
+app.get('/find', catchAsync(async (req, res) => {
+    const allCamps = await Campground.find({});
+    res.json(allCamps);
+}))
 
 // routes
 app.use('/campgrounds', campgroundRoutes)

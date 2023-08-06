@@ -43,6 +43,7 @@ module.exports = {
             req.flash('error', 'campground was not found');
             res.redirect('/campgrounds')
         }
+        console.log(foundCamp)
         res.render('campgrounds/show', { foundCamp });
     },
 
@@ -58,8 +59,16 @@ module.exports = {
 
     updateCampground: async (req, res) => {
         const id = req.params.id;
-        console.log(req.body, req.files)
+
+        const geoData = await geocoder.forwardGeocode({
+            query: req.body.campground.location,
+            limit: 1
+        }).send()
+        req.body.campground.geometry = geoData.body.features[0].geometry;
+
+
         const newCamp = await Campground.findByIdAndUpdate(id, req.body.campground);
+
         //has req.files me new files.
         let newImagesArray = req.files.map(el => ({ url: el.path, fileName: el.filename }));
         newCamp.images.push(...newImagesArray);

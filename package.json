@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "@mapbox/mapbox-sdk": "^0.15.3",
+    "axios": "^1.4.0",
     "bootstrap-icons": "^1.10.5",
     "cloudinary": "^1.40.0",
     "connect-flash": "^0.1.1",

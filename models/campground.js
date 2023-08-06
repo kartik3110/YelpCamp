@@ -49,7 +49,7 @@ const CampgroundSchema = new Schema({
 
 CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
     // return "<h5>hleo</h5>"
-    return `<a href=\\"/campgrounds/${this._id}\\">${this.title}</a>`
+    return `<a href="/campgrounds/${this._id}">${this.title}</a>`
 
     //when \\" will make so that the quotations will not get passed during JSON.parse, and will be kept as is.
 })
