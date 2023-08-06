@@ -13,15 +13,16 @@
             </div>
         </div>
         <div class="navbar-nav ml-auto">
+            <a class="nav-link" href="https://github.com/kartik3110/YelpCamp">About</a>
             <% if (!currentUser) { %>
-                <a class="nav-link" href="/register">Register</a>
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/login">Sign In</a>
+                <a class="btn btn-primary" href="/register">Join Free</a>
                 <% } %>
                     <% if (currentUser) { %>
                         <a class="nav-link disabled" href="/logout">
-                            <%= currentUser.username %>
+                            Hi, <%= currentUser.username %>
                         </a>
-                        <a class="nav-link" href="/logout">Logout</a>
+                        <a class="btn btn-primary" href="/logout">Logout</a>
                         <% } %>
         </div>
     </div>

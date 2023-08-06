@@ -13,7 +13,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
-
+const MongoStore = require('connect-mongo');
 
 const Campground = require('./models/campground')
 const campgroundRoutes = require('./routes/campgrounds');
@@ -31,10 +31,9 @@ const catchAsync = require('./utils/catchAsync');
 // const Review = require('./models/review');
 // const catchAsync = require('./utils/catchAsync');
 const app = express();
-
-
+const dbUrl = 'mongodb://127.0.0.1:27017/yelp-camp';
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -49,7 +48,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,//if not changed, only refresh sessions after 24 hrs
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
 const sessionOptions = {
+    store: store,// dont use default memory store to store sessions.
     name: 'session',
     secret: 'thisshouldbeasecret',
     resave: false,
